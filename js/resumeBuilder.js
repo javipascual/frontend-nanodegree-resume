@@ -47,7 +47,8 @@ var education = {
     {
       "title": "Programming Mobile Applications for Android Handheld Systems: Part 1",
       "school": "University of Maryland (coursera.org)",
-      "dates": "June 2015"
+      "dates": "June 2015",
+      "url": "https://www.coursera.org/course/androidpart1"
     }
   ]
 };
@@ -104,3 +105,15 @@ for (i=0;i<education.schools.length;i++){
   var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
   $(".education-entry:last").append(formattedName+formattedDegree+formattedDates+formattedLocation+formattedMajor);
 }
+
+$("#education").append(HTMLonlineClasses);
+for (i=0;i<education.onlineCourses.length;i++){
+  $("#education").append(HTMLschoolStart);
+  var formattedName = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
+  var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+  var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+  var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
+  $(".education-entry:last").append(formattedName+formattedSchool+formattedDates+formattedURL);
+}
+
+$("#map-div").append(googleMap);
