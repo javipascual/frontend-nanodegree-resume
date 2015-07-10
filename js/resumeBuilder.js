@@ -38,8 +38,8 @@ var education = {
   "schools" : [
     {
     "name": "UPC",
-    "city": "Barcelona",
-    "dates": 2002,
+    "location": "Barcelona",
+    "dates": "2002",
     "degree": "Masters",
     "major": "CompSci"}
   ],
@@ -82,6 +82,16 @@ var bio = {
    var formattedDescr = HTMLworkDescription.replace("%data%", work.jobs[i].description);
    $(".work-entry:last").append(formattedEmployer+formattedTitle+formattedDates+formattedLocation+formattedDescr);
  }
+
+for (i=0;i<education.schools.length;i++){
+  $("#education").append(HTMLschoolStart);
+  var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
+  var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+  var formattedDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
+  var formattedLocation = HTMLschoolLocation .replace("%data%", education.schools[i].location);
+  var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+  $(".education-entry:last").append(formattedName+formattedDegree+formattedDates+formattedLocation+formattedMajor);
+}
 
  var formattedName = HTMLheaderName.replace("%data%", bio.name);
  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
