@@ -57,7 +57,7 @@ var bio = {
   "name" : "Javier Pascual",
   "role" : "Software Engineer",
   "contacts" : {"email" : "javipascualg@gmail.com", "location":"Berlin", "github":"https://github.com/javipascual/", "mobile":"+40 0176 11223344"},
-  "pic_url" : "images/fry.jpg",
+  "pic_url" : "images/me.jpg",
   "message" : "Hey!",
   "skills" : ["C++", "JS", "Matlab", "Python"]
 };
