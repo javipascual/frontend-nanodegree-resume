@@ -10,7 +10,6 @@ var bio = {
   "welcomeMessage" : "Hey!",
   "biopic" : "images/me.jpg",
   "skills" : ["C++", "JS", "Matlab", "Python"],
-  "display": {}
 };
 
 bio.display = function(){
@@ -18,10 +17,11 @@ bio.display = function(){
   // HEADER
   var formattedName = HTMLheaderName.replace("%data%", bio.name);
   var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-  var formattedbioPic = HTMLbioPic.replace("%data%", bio.pic_url);
+  var formattedbioPic = HTMLbioPic.replace("%data%", bio.biopic);
   var formattedwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
   $("#header").prepend(formattedName+formattedRole+formattedbioPic);
+  $("#header").append(formattedwelcomeMsg);
 
   // CONTACT
   var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
@@ -32,11 +32,11 @@ bio.display = function(){
 
   $("#topContacts").append(formattedMobile+formattedMail+formattedGithub+formattedTwitter+formattedLocation);
 
-  // BIO
+  // SKILLS
   $("#header").append(HTMLskillsStart);
   for (i=0;i<bio.skills.length;i++){
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-    $("#skills-h3").append(formattedSkill);
+    $("#skills").append(formattedSkill);
   }
 
 }
@@ -59,8 +59,7 @@ var education = {
       "date": 2015,
       "url": "https://www.coursera.org/course/androidpart1"
     }
-  ],
-  "display": {}
+  ]
 };
 
 education.display = function() {
@@ -79,7 +78,7 @@ education.display = function() {
     $("#education").append(HTMLschoolStart);
     var formattedName = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
     var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
-    var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+    var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].date);
     var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
     $(".education-entry:last").append(formattedName+formattedSchool+formattedDates+formattedURL);
   }
@@ -131,10 +130,30 @@ work.display = function(){
   }
 }
 
-var projects = {
-};
+var projects =  {
+  "projects": [
+    {
+      "title" : "Sample Project",
+      "dates": "March 2013 - Present",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum feugiat tincidunt sapien, vitae porttitor augue sodales at. Aliquam fringilla consequat mi, quis consequat tortor vulputate et.",
+      "images": ["images/nielsen.jpg", "images/tu.jpg"]
+    }
+  ]
+}
 
 projects.display = function() {
+  for (i=0;i<projects.projects.length;i++){
+    $("#projects").append(HTMLprojectStart);
+    var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+    var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+    var formattedDescr = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+    var formattedImgs = "";
+    for (j=0;j<projects.projects[i].images.length;j++){
+      formattedImgs = formattedImgs +  HTMLprojectImage.replace("%data%", projects.projects[i].images[j]);
+    }
+    $(".project-entry:last").append(formattedTitle+formattedDates+formattedDescr+formattedImgs);
+
+  }
 }
 
 bio.display();
